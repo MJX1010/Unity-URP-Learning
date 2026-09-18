@@ -1,41 +1,22 @@
 # Unity URP Learning
 
-面向 **Unity 2022.3 LTS / URP 14+** 的学习仓库：把三条 B 站 URP 课程的主题拆成可对照的原理笔记，并配上可直接拖进 URP 工程的手写 Shader / Renderer Feature Demo。
+按 **编辑器版本** 分目录，不要混用。
 
-> 本仓库是学习笔记 + 可运行示例，**不是**对原视频的逐字抄录或官方课件镜像。原课程版权归 UP 主所有，请以原视频为准做对照学习。
-
-## 仓库结构
-
-```
-docs/                         原理与视频对照
-Assets/URPLearning/
-  Shaders/                    手写 Shader
-  Shaders/Includes/           公共 HLSL
-  Scripts/                    Renderer Feature / Pass
-  Materials/                  材质使用说明
-  Scenes/                     场景搭建说明
-```
-
-## 对应视频（验证结论）
-
-| 视频 | 链接 | 验证状态 | 本仓库对应 |
+| 目录 | Unity | URP | 自定义 Pass |
 | --- | --- | --- | --- |
-| URP 的渲染流程的理解 · 像灰一样 | https://www.bilibili.com/video/BV18P4y1k7zu | 已核对标题 / UP / 时长 08:10 | `docs/00-video-notes.md`、`docs/01-urp-pipeline.md`、`FullScreenTintFeature` |
-| Unity URP Shader 入门到精通｜从渲染管线到手写自定义 PBR | https://b23.tv/fG00XwJ | 短链元数据不稳定；主题按标题拆解 | Unlit → Lambert → Blinn-Phong → Custom PBR |
-| Unity URP Shader 入门精要：从零复刻原神渲染 · 砂塘学徒 | 约 2h46m | 已核对 UP 与超长单集形态 | `GenshinLit.shader` + `docs/05-genshin-npr.md` |
+| [Unity-2022.3.62f3](Unity-2022.3.62f3/) | 2022.3.62f3 LTS | 14.x | `Execute` + `cameraColorTargetHandle` + `CommandBuffer.Blit` |
+| [Unity-6](Unity-6/) | Unity 6 / 6000.x | 17.x | `RecordRenderGraph` + `Blitter` + `TextureHandle` |
 
-详细验证过程见 [docs/00-video-notes.md](docs/00-video-notes.md)。
+两套都包含同一套手写 Shader：Unlit → Lambert → Blinn-Phong → Custom PBR → NPR，以及全屏 Tint Feature。
 
-## 推荐学习顺序
+## 怎么用
 
-1. 用 Unity Hub 新建 **3D (URP)** 工程，把 `Assets/URPLearning` 拷进去。
-2. 读 [docs/01-urp-pipeline.md](docs/01-urp-pipeline.md)。
-3. 读 [docs/02-urp-usage.md](docs/02-urp-usage.md)。
-4. 按 Shader 难度打开材质：Unlit → Lambert → BlinnPhong → CustomPBR → GenshinLit / Face。
-5. 把 `FullScreenTintFeature` 加到 URP Renderer 上。
+1. 用对应版本的 Unity Hub 新建 **3D (URP)** 工程。
+2. 只拷对应目录里的 `Assets/URPLearning` 到工程 `Assets/`。
+3. 先看该目录下的 `README.md` 和 `docs/`。
 
-## 环境
+不要把 2022 的 Feature 丢进 Unity 6；也不要把 Unity 6 的 Render Graph 脚本丢进 2022.3。
 
-- Unity 2022.3.x 或 Unity 6
-- Universal RP 已安装
-- Color Space 建议 Linear
+版本差异见 [docs/version-matrix.md](docs/version-matrix.md)。
+
+根目录旧的 `Assets/` 保留作兼容，以版本目录为准。
